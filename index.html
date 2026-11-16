@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA & CO. | เว็บไซต์ร้านเสื้อผ้าแฟชั่นมินิมอลและสตรีทแวร์</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Kanit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Kanit', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#fdf4f3',
+              100: '#fbe8e7',
+              200: '#f7d5d2',
+              500: '#e14d3d',
+              600: '#c93829',
+              900: '#1e1c1b',
+              dark: '#121212'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Kanit', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .cloth-card:hover .quick-add-btn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+    .animate-pulse-subtle {
+      animation: pulse-subtle 2s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-rose-500 selection:text-white flex flex-col min-h-screen">
+
+  <!-- 1. Top Announcement Bar -->
+  <div class="bg-slate-900 text-slate-200 text-xs py-2 px-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="hidden sm:flex items-center gap-4 text-slate-400">
+        <span>📞 ฝ่ายบริการลูกค้า: 02-123-4567</span>
+        <span>•</span>
+        <span>📍 หน้าร้าน: สาขา สยามสแควร์วัน ชั้น 2</span>
+      </div>
+      <div class="mx-auto sm:mx-0 flex items-center gap-2 font-medium">
+        <span class="bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">SALE</span>
+        <span>🎉 จัดส่งฟรีทั่วประเทศ เมื่อสั่งซื้อครบ ฿590! ใช้โค้ด: <strong class="text-rose-400 underline cursor-pointer" onclick="copyCoupon('AURA15')">AURA15</strong> ลดเพิ่ม 15%</span>
+      </div>
+      <div class="hidden md:flex items-center gap-3 text-slate-400">
+        <button class="hover:text-white transition">ช่วยเหลือ</button>
+        <span>|</span>
+        <button class="hover:text-white transition">ติดตามพัสดุ</button>
+        <span>|</span>
+        <span class="text-white font-medium">TH / THB ฿</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Main Navigation Bar -->
+  <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Mobile Menu Hamburger -->
+        <div class="flex items-center lg:hidden">
+          <button onclick="toggleMobileNav()" class="p-2 text-slate-700 hover:text-slate-900 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Brand Logo -->
+        <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+          <div class="w-10 h-10 rounded-2xl bg-slate-900 text-white flex items-center justify-center font-bold text-xl tracking-tighter shadow-md shadow-slate-900/20">
+            A
+          </div>
+          <div>
+            <span class="text-xl sm:text-2xl font-black tracking-tight text-slate-900 uppercase">AURA <span class="text-rose-600">&</span> CO.</span>
+            <span class="hidden sm:block text-[10px] font-semibold text-slate-400 tracking-widest uppercase -mt-1">MODERN APPAREL ATELIER</span>
+          </div>
+        </div>
+
+        <!-- Desktop Nav Links -->
+        <div class="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-700">
+          <a href="#new-arrival" class="hover:text-rose-600 transition flex items-center gap-1">
+            <span>สินค้ามาใหม่</span>
+            <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+          </a>
+          <a href="#catalog" class="hover:text-rose-600 transition">เสื้อผ้าผู้ชาย</a>
+          <a href="#catalog" class="hover:text-rose-600 transition">เสื้อผ้าผู้หญิง</a>
+          <a href="#categories" class="hover:text-rose-600 transition">หมวดหมู่สินค้า</a>
+          <a href="#flash-sale" class="text-rose-600 font-semibold hover:text-rose-700 transition flex items-center gap-1">
+            <span>⚡ Flash Sale</span>
+          </a>
+          <a href="#lookbook" class="hover:text-rose-600 transition">Lookbook 2026</a>
+        </div>
+
+        <!-- Search Bar & User Actions -->
+        <div class="flex items-center gap-3 sm:gap-4">
+          <!-- Search Box (Desktop) -->
+          <div class="relative hidden md:block w-56 lg:w-64">
+            <input 
+              id="desktop-search" 
+              type="text" 
+              oninput="handleSearch(this.value)"
+              placeholder="ค้นหาเสื้อยืด, กางเกง, เชิ้ต..." 
+              class="w-full pl-9 pr-4 py-2 text-xs bg-slate-100 hover:bg-slate-200/80 focus:bg-white rounded-full border border-transparent focus:border-slate-300 focus:outline-none transition-all"
+            >
+            <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+
+          <!-- Wishlist Button -->
+          <button onclick="openWishlistModal()" class="p-2.5 text-slate-700 hover:text-rose-600 hover:bg-slate-100 rounded-full transition relative" title="รายการโปรด">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+            <span id="wishlist-badge" class="hidden absolute top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full"></span>
+          </button>
+
+          <!-- Shopping Cart Drawer Trigger -->
+          <button onclick="toggleCartDrawer()" class="flex items-center gap-2 bg-slate-900 hover:bg-rose-600 text-white px-4 py-2.5 rounded-full transition-all shadow-md shadow-slate-900/10 active:scale-95 group">
+            <div class="relative">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+              </svg>
+              <span id="cart-counter" class="absolute -top-2 -right-2 bg-rose-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center ring-2 ring-slate-900 group-hover:ring-rose-600 transition-all">0</span>
+            </div>
+            <span class="text-xs font-semibold hidden sm:inline" id="cart-total-top">฿0</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Mobile Search Field -->
+      <div class="block md:hidden pb-3">
+        <div class="relative">
+          <input 
+            type="text" 
+            oninput="handleSearch(this.value)"
+            placeholder="ค้นหาเสื้อผ้า, คอลเลกชันใหม่..." 
+            class="w-full pl-9 pr-4 py-2 text-xs bg-slate-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-slate-400"
+          >
+          <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Nav Menu (Dropdown) -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-100 bg-white px-4 pt-3 pb-6 space-y-3 text-sm">
+      <a href="#new-arrival" onclick="toggleMobileNav()" class="block py-2 font-medium text-slate-800 hover:text-rose-600">✨ สินค้ามาใหม่ New Drop</a>
+      <a href="#catalog" onclick="toggleMobileNav()" class="block py-2 font-medium text-slate-800 hover:text-rose-600">👔 เสื้อผ้าผู้ชาย (Men)</a>
+      <a href="#catalog" onclick="toggleMobileNav()" class="block py-2 font-medium text-slate-800 hover:text-rose-600">👗 เสื้อผ้าผู้หญิง (Women)</a>
+      <a href="#categories" onclick="toggleMobileNav()" class="block py-2 font-medium text-slate-800 hover:text-rose-600">🏷️ หมวดหมู่สินค้า</a>
+      <a href="#flash-sale" onclick="toggleMobileNav()" class="block py-2 font-bold text-rose-600">⚡ Flash Sale ลดสูงสุด 50%</a>
+      <div class="pt-3 border-t border-slate-100 text-xs text-slate-500">
+        <p>บริการลูกค้า: 02-123-4567 | ทุกวัน 09:00 - 20:00 น.</p>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 3. Hero Section (Banner โฆษณาหลัก) -->
+  <section class="relative bg-slate-900 text-white overflow-hidden py-16 sm:py-24 lg:py-28">
+    <div class="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(#e14d3d_1px,transparent_1px)] [background-size:20px_20px]"></div>
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-rose-600/30 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-amber-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+            คอลเลกชันใหม่ฤดูกาล 2026 : URBAN ESSENTIALS
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight uppercase">
+            แต่งตัวให้มั่นใจ<br>
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-rose-400 via-amber-200 to-indigo-300">
+              เรียบหรูในทุกวัน
+            </span>
+          </h1>
+
+          <p class="text-slate-300 text-base sm:text-lg max-w-2xl font-light leading-relaxed mx-auto lg:mx-0">
+            เสื้อผ้าสไตล์มินิมอลและสตรีทแวร์ร่วมสมัย ตัดเย็บด้วยผ้าพรีเมียมคอตตอน 100% ระบายอากาศยอดเยี่ยม เหมาะกับอากาศเมืองไทย ใส่ได้ทุกโอกาส
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="#catalog" class="px-8 py-3.5 rounded-xl bg-white text-slate-900 font-bold text-sm shadow-xl hover:bg-slate-100 hover:shadow-white/20 active:scale-95 transition-all">
+              ช้อปคอลเลกชันใหม่ ➔
+            </a>
+            <a href="#flash-sale" class="px-8 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-white font-semibold text-sm backdrop-blur transition-all active:scale-95 flex items-center gap-2">
+              <span class="text-rose-400">⚡</span> ดู Flash Sale วันนี้
+            </a>
+          </div>
+
+          <div class="pt-6 border-t border-slate-800/80 grid grid-cols-3 gap-6 max-w-md mx-auto lg:mx-0 text-center">
+            <div>
+              <p class="text-2xl font-extrabold text-white">50k+</p>
+              <p class="text-xs text-slate-400">ลูกค้าพึงพอใจ</p>
+            </div>
+            <div>
+              <p class="text-2xl font-extrabold text-white">100%</p>
+              <p class="text-xs text-slate-400">ผ้าฝ้ายเกรดพรีเมียม</p>
+            </div>
+            <div>
+              <p class="text-2xl font-extrabold text-white">4.9 ★</p>
+              <p class="text-xs text-slate-400">จาก 3,800+ รีวิว</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 relative flex justify-center">
+          <div class="relative w-full max-w-sm bg-gradient-to-b from-slate-800 to-slate-800/60 p-6 rounded-3xl border border-slate-700/80 shadow-2xl backdrop-blur-xl">
+            <div class="absolute -top-3 -right-3 bg-rose-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg transform rotate-6">
+              ขายดีอันดับ 1 🔥
+            </div>
+
+            <div class="h-64 rounded-2xl bg-gradient-to-br from-zinc-700 via-slate-800 to-zinc-900 flex flex-col items-center justify-center relative overflow-hidden border border-slate-700">
+              <span class="text-8xl select-none transform hover:scale-110 transition duration-500">👕</span>
+              <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded-lg text-[11px] text-slate-200">
+                100% Cotton Comb 30
+              </div>
+            </div>
+
+            <div class="mt-5 space-y-2">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-bold text-white text-lg">Signature Oversized Tee</h3>
+                  <p class="text-xs text-slate-400">ทรงหลวมสไตล์ญี่ปุ่น สีกรมท่า / ดำ / ขาว</p>
+                </div>
+                <div class="text-right">
+                  <span class="text-lg font-bold text-rose-400">฿390</span>
+                  <span class="block text-xs text-slate-500 line-through">฿590</span>
+                </div>
+              </div>
+
+              <div class="pt-3 flex gap-2">
+                <button onclick="addToCart(1)" class="w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs shadow-lg shadow-rose-600/30 transition active:scale-95">
+                  + เพิ่มลงตะกร้าด่วน
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Value Propositions (จุดเด่นร้านค้า) -->
+  <section class="border-y border-slate-200 bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center sm:text-left">
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-xl shrink-0">🚚</div>
+          <div>
+            <h4 class="text-sm font-bold text-slate-900">จัดส่งฟรีทั่วไทย</h4>
+            <p class="text-xs text-slate-500 mt-0.5">เมื่อสั่งซื้อครบ ฿590 ขึ้นไป ส่งไว 1-2 วัน</p>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl shrink-0">🔄</div>
+          <div>
+            <h4 class="text-sm font-bold text-slate-900">เปลี่ยนไซส์ได้ใน 14 วัน</h4>
+            <p class="text-xs text-slate-500 mt-0.5">ใส่ไม่พอดี ส่งเปลี่ยนได้ฟรีไม่มีเงื่อนไข</p>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl shrink-0">🌿</div>
+          <div>
+            <h4 class="text-sm font-bold text-slate-900">ผ้าพรีเมียม 100%</h4>
+            <p class="text-xs text-slate-500 mt-0.5">ผ้าฝ้ายไม่ย้วย ไม่หด ซักเครื่องได้สบาย</p>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl shrink-0">🛡️</div>
+          <div>
+            <h4 class="text-sm font-bold text-slate-900">ชำระเงินปลอดภัย</h4>
+            <p class="text-xs text-slate-500 mt-0.5">มีเก็บเงินปลายทาง COD / บัตรเครดิต / สแกน</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Category Showcase -->
+  <section id="categories" class="py-12 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-rose-600">SHOP BY CATEGORY</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">หมวดหมู่ยอดนิยม</h2>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-500 max-w-sm">เลือกสรรเสื้อผ้าตามสไตล์ที่คุณชื่นชอบ</p>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div onclick="selectCategory('tshirt')" class="group cursor-pointer relative rounded-2xl overflow-hidden bg-gradient-to-tr from-sky-900 to-indigo-700 text-white p-6 h-56 flex flex-col justify-between shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="relative z-10">
+            <span class="text-xs font-medium text-sky-200">120+ ไอเทม</span>
+            <h3 class="text-xl font-bold mt-1 group-hover:text-amber-300 transition">เสื้อยืด Oversized</h3>
+            <p class="text-xs text-sky-100/80 mt-1">สัมผัสนุ่ม ทรงสวย ไม่ย้วย</p>
+          </div>
+          <span class="text-6xl self-end group-hover:scale-125 transition-transform duration-300">👕</span>
+          <div class="relative z-10 font-bold text-xs flex items-center gap-1 text-white group-hover:underline"><span>ช้อปเลย</span> ➔</div>
+        </div>
+
+        <div onclick="selectCategory('shirt')" class="group cursor-pointer relative rounded-2xl overflow-hidden bg-gradient-to-tr from-amber-900 to-orange-700 text-white p-6 h-56 flex flex-col justify-between shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="relative z-10">
+            <span class="text-xs font-medium text-amber-200">85+ ไอเทม</span>
+            <h3 class="text-xl font-bold mt-1 group-hover:text-amber-300 transition">เสื้อเชิ้ต & ลินิน</h3>
+            <p class="text-xs text-amber-100/80 mt-1">สไตล์เกาหลี เรียบโก้ ดูดี</p>
+          </div>
+          <span class="text-6xl self-end group-hover:scale-125 transition-transform duration-300">👔</span>
+          <div class="relative z-10 font-bold text-xs flex items-center gap-1 text-white group-hover:underline"><span>ช้อปเลย</span> ➔</div>
+        </div>
+
+        <div onclick="selectCategory('pants')" class="group cursor-pointer relative rounded-2xl overflow-hidden bg-gradient-to-tr from-emerald-950 to-teal-800 text-white p-6 h-56 flex flex-col justify-between shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="relative z-10">
+            <span class="text-xs font-medium text-emerald-200">60+ ไอเทม</span>
+            <h3 class="text-xl font-bold mt-1 group-hover:text-amber-300 transition">กางเกงสแล็ค & คาร์โก้</h3>
+            <p class="text-xs text-emerald-100/80 mt-1">ทรงขากระบอก ใส่สบาย</p>
+          </div>
+          <span class="text-6xl self-end group-hover:scale-125 transition-transform duration-300">👖</span>
+          <div class="relative z-10 font-bold text-xs flex items-center gap-1 text-white group-hover:underline"><span>ช้อปเลย</span> ➔</div>
+        </div>
+
+        <div onclick="selectCategory('jacket')" class="group cursor-pointer relative rounded-2xl overflow-hidden bg-gradient-to-tr from-slate-900 to-zinc-700 text-white p-6 h-56 flex flex-col justify-between shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="relative z-10">
+            <span class="text-xs font-medium text-slate-300">45+ ไอเทม</span>
+            <h3 class="text-xl font-bold mt-1 group-hover:text-amber-300 transition">แจ็คเก็ต & เสื้อคลุม</h3>
+            <p class="text-xs text-slate-300/80 mt-1">ยีนส์ฟอก และ Blazer ชิคๆ</p>
+          </div>
+          <span class="text-6xl self-end group-hover:scale-125 transition-transform duration-300">🧥</span>
+          <div class="relative z-10 font-bold text-xs flex items-center gap-1 text-white group-hover:underline"><span>ช้อปเลย</span> ➔</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Flash Sale Section -->
+  <section id="flash-sale" class="py-12 bg-gradient-to-r from-rose-950 via-slate-900 to-rose-900 text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex flex-col md:flex-row md:items-center justify-between pb-8 border-b border-rose-800/40 gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-full bg-rose-500 text-white text-xs font-bold uppercase tracking-wider animate-pulse">FLASH SALE</span>
+            <span class="text-xs text-rose-300">ลดกระหน่ำพิเศษเฉพาะวันนี้เท่านั้น</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black mt-1">ดีลลดราคาสูงสุด 50%</h2>
+        </div>
+
+        <div class="flex items-center gap-2 bg-slate-950/80 border border-rose-500/30 p-2 sm:p-3 rounded-2xl">
+          <span class="text-xs text-slate-400 font-medium px-2">จบดีลในอีก :</span>
+          <div class="flex items-center gap-1.5 font-mono text-center">
+            <div class="bg-rose-600 px-2.5 py-1.5 rounded-lg text-sm sm:text-base font-bold min-w-9" id="fs-hours">02</div>
+            <span class="font-bold text-rose-400">:</span>
+            <div class="bg-rose-600 px-2.5 py-1.5 rounded-lg text-sm sm:text-base font-bold min-w-9" id="fs-minutes">48</div>
+            <span class="font-bold text-rose-400">:</span>
+            <div class="bg-rose-600 px-2.5 py-1.5 rounded-lg text-sm sm:text-base font-bold min-w-9" id="fs-seconds">30</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+        <div class="bg-slate-800/90 rounded-2xl p-4 border border-rose-900/50 hover:border-rose-500/80 transition-all flex flex-col justify-between">
+          <div class="relative bg-gradient-to-b from-slate-700 to-slate-800 h-48 rounded-xl flex items-center justify-center overflow-hidden">
+            <span class="absolute top-2 left-2 bg-rose-600 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-md">-45% OFF</span>
+            <span class="text-6xl transform hover:scale-110 transition duration-300">👕</span>
+          </div>
+          <div class="mt-4 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] text-rose-400 font-semibold">เสื้อยืดสกรีนลาย Street Tokyo</span>
+              <h4 class="text-sm font-bold text-white mt-0.5">Heavy Cotton Oversized T-Shirt</h4>
+              <div class="flex items-baseline gap-2 mt-2">
+                <span class="text-lg font-black text-white">฿290</span>
+                <span class="text-xs text-slate-400 line-through">฿550</span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="flex justify-between text-[10px] text-slate-300 mb-1">
+                <span>ขายแล้ว 78%</span>
+                <span class="text-rose-400 font-bold">เหลือ 7 ชิ้น</span>
+              </div>
+              <div class="w-full h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-amber-400 to-rose-500 rounded-full" style="width: 78%"></div>
+              </div>
+              <button onclick="addToCart(5)" class="mt-3 w-full py-2 bg-rose-600 hover:bg-rose-500 text-white rounded-xl text-xs font-bold transition active:scale-95">ซื้อทันที</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-slate-800/90 rounded-2xl p-4 border border-rose-900/50 hover:border-rose-500/80 transition-all flex flex-col justify-between">
+          <div class="relative bg-gradient-to-b from-slate-700 to-slate-800 h-48 rounded-xl flex items-center justify-center overflow-hidden">
+            <span class="absolute top-2 left-2 bg-rose-600 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-md">-35% OFF</span>
+            <span class="text-6xl transform hover:scale-110 transition duration-300">👔</span>
+          </div>
+          <div class="mt-4 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] text-rose-400 font-semibold">เสื้อเชิ้ตคิวบา ผ้าลินินผสม</span>
+              <h4 class="text-sm font-bold text-white mt-0.5">Cuban Collar Linen Shirt</h4>
+              <div class="flex items-baseline gap-2 mt-2">
+                <span class="text-lg font-black text-white">฿490</span>
+                <span class="text-xs text-slate-400 line-through">฿750</span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="flex justify-between text-[10px] text-slate-300 mb-1">
+                <span>ขายแล้ว 90%</span>
+                <span class="text-rose-400 font-bold">เหลือ 3 ชิ้น</span>
+              </div>
+              <div class="w-full h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-amber-400 to-rose-500 rounded-full" style="width: 90%"></div>
+              </div>
+              <button onclick="addToCart(2)" class="mt-3 w-full py-2 bg-rose-600 hover:bg-rose-500 text-white rounded-xl text-xs font-bold transition active:scale-95">ซื้อทันที</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-slate-800/90 rounded-2xl p-4 border border-rose-900/50 hover:border-rose-500/80 transition-all flex flex-col justify-between">
+          <div class="relative bg-gradient-to-b from-slate-700 to-slate-800 h-48 rounded-xl flex items-center justify-center overflow-hidden">
+            <span class="absolute top-2 left-2 bg-rose-600 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-md">-40% OFF</span>
+            <span class="text-6xl transform hover:scale-110 transition duration-300">👖</span>
+          </div>
+          <div class="mt-4 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] text-rose-400 font-semibold">กางเกงคาร์โก้สตรีทแวร์</span>
+              <h4 class="text-sm font-bold text-white mt-0.5">Utility Multi-Pocket Cargo</h4>
+              <div class="flex items-baseline gap-2 mt-2">
+                <span class="text-lg font-black text-white">฿590</span>
+                <span class="text-xs text-slate-400 line-through">฿990</span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="flex justify-between text-[10px] text-slate-300 mb-1">
+                <span>ขายแล้ว 65%</span>
+                <span class="text-rose-400 font-bold">เหลือ 12 ชิ้น</span>
+              </div>
+              <div class="w-full h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-amber-400 to-rose-500 rounded-full" style="width: 65%"></div>
+              </div>
+              <button onclick="addToCart(3)" class="mt-3 w-full py-2 bg-rose-600 hover:bg-rose-500 text-white rounded-xl text-xs font-bold transition active:scale-95">ซื้อทันที</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-slate-800/90 rounded-2xl p-4 border border-rose-900/50 hover:border-rose-500/80 transition-all flex flex-col justify-between">
+          <div class="relative bg-gradient-to-b from-slate-700 to-slate-800 h-48 rounded-xl flex items-center justify-center overflow-hidden">
+            <span class="absolute top-2 left-2 bg-rose-600 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-md">-30% OFF</span>
+            <span class="text-6xl transform hover:scale-110 transition duration-300">🧥</span>
+          </div>
+          <div class="mt-4 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] text-rose-400 font-semibold">แจ็คเก็ตยีนส์วินเทจฟอกเฟด</span>
+              <h4 class="text-sm font-bold text-white mt-0.5">Vintage Washed Denim Jacket</h4>
+              <div class="flex items-baseline gap-2 mt-2">
+                <span class="text-lg font-black text-white">฿890</span>
+                <span class="text-xs text-slate-400 line-through">฿1,290</span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="flex justify-between text-[10px] text-slate-300 mb-1">
+                <span>ขายแล้ว 82%</span>
+                <span class="text-rose-400 font-bold">เหลือ 4 ชิ้น</span>
+              </div>
+              <div class="w-full h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-amber-400 to-rose-500 rounded-full" style="width: 82%"></div>
+              </div>
+              <button onclick="addToCart(4)" class="mt-3 w-full py-2 bg-rose-600 hover:bg-rose-500 text-white rounded-xl text-xs font-bold transition active:scale-95">ซื้อทันที</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Main Product Catalog -->
+  <section id="catalog" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between pb-8 border-b border-slate-200 gap-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-rose-600" id="new-arrival">EXPLORE PRODUCTS</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">คลังสินค้าเสื้อผ้าแฟชั่น</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1" id="catalog-count-label">พบทั้งหมด 8 รายการ</p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3">
+          <div class="flex items-center gap-1.5 bg-slate-100 p-1.5 rounded-2xl overflow-x-auto no-scrollbar max-w-full">
+            <button onclick="setFilter('all', this)" class="filter-btn active-tab px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white shadow-sm transition">ทั้งหมด</button>
+            <button onclick="setFilter('tshirt', this)" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition">เสื้อยืด</button>
+            <button onclick="setFilter('shirt', this)" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition">เสื้อเชิ้ต</button>
+            <button onclick="setFilter('pants', this)" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition">กางเกง</button>
+            <button onclick="setFilter('jacket', this)" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition">แจ็คเก็ต</button>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <select id="catalog-sort" onchange="handleSortChange(this.value)" class="bg-slate-100 border-none text-slate-800 text-xs py-2.5 px-3.5 rounded-xl font-medium focus:ring-2 focus:ring-rose-500 cursor-pointer">
+              <option value="featured">✨ สินค้าแนะนำ</option>
+              <option value="price-low">ราคา: ต่ำ ➔ สูง</option>
+              <option value="price-high">ราคา: สูง ➔ ต่ำ</option>
+              <option value="rating">คะแนนรีวิวสูงสุด</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 pt-4 pb-6 overflow-x-auto text-xs">
+        <span class="text-slate-400 font-medium">เลือกไซส์:</span>
+        <button onclick="toggleSizeFilter('ALL', this)" class="size-btn px-3 py-1 rounded-lg border border-slate-900 bg-slate-900 text-white font-bold">ALL</button>
+        <button onclick="toggleSizeFilter('S', this)" class="size-btn px-3 py-1 rounded-lg border border-slate-200 hover:border-slate-400 text-slate-700 font-medium">S</button>
+        <button onclick="toggleSizeFilter('M', this)" class="size-btn px-3 py-1 rounded-lg border border-slate-200 hover:border-slate-400 text-slate-700 font-medium">M</button>
+        <button onclick="toggleSizeFilter('L', this)" class="size-btn px-3 py-1 rounded-lg border border-slate-200 hover:border-slate-400 text-slate-700 font-medium">L</button>
+        <button onclick="toggleSizeFilter('XL', this)" class="size-btn px-3 py-1 rounded-lg border border-slate-200 hover:border-slate-400 text-slate-700 font-medium">XL</button>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="product-grid"></div>
+    </div>
+  </section>
+
+  <!-- 8. Lookbook Section -->
+  <section id="lookbook" class="py-16 bg-slate-100 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-bold uppercase tracking-wider text-rose-600">INSPIRATION & STYLE</span>
+        <h2 class="text-3xl font-black text-slate-900 mt-1">#AURAOOTD ประจำสัปดาห์</h2>
+        <p class="text-slate-500 text-xs sm:text-sm mt-2">ไอเดียการแมตช์ชุดเสื้อผ้าเรียบง่ายแต่ดูดี</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="relative group rounded-2xl overflow-hidden shadow-md bg-gradient-to-b from-stone-200 to-stone-400 h-80 flex flex-col justify-end p-5">
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition duration-300"></div>
+          <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-7xl select-none group-hover:scale-110 transition duration-300">🧍‍♂️</span>
+          <div class="relative z-10 text-white">
+            <span class="text-[10px] uppercase font-bold tracking-wider bg-rose-600 px-2 py-0.5 rounded-md">Minimal Street</span>
+            <h4 class="font-bold text-sm mt-1">เสื้อยืดขาว + Cargo ดำ</h4>
+            <p class="text-xs text-slate-200">Total: ฿980</p>
+          </div>
+        </div>
+
+        <div class="relative group rounded-2xl overflow-hidden shadow-md bg-gradient-to-b from-amber-100 to-amber-300 h-80 flex flex-col justify-end p-5">
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition duration-300"></div>
+          <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-7xl select-none group-hover:scale-110 transition duration-300">🕺</span>
+          <div class="relative z-10 text-white">
+            <span class="text-[10px] uppercase font-bold tracking-wider bg-amber-600 px-2 py-0.5 rounded-md">Cafe Hopping</span>
+            <h4 class="font-bold text-sm mt-1">เชิ้ตลินิน + สแล็คครีม</h4>
+            <p class="text-xs text-slate-200">Total: ฿1,040</p>
+          </div>
+        </div>
+
+        <div class="relative group rounded-2xl overflow-hidden shadow-md bg-gradient-to-b from-blue-200 to-indigo-300 h-80 flex flex-col justify-end p-5">
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition duration-300"></div>
+          <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-7xl select-none group-hover:scale-110 transition duration-300">🚶‍♀️</span>
+          <div class="relative z-10 text-white">
+            <span class="text-[10px] uppercase font-bold tracking-wider bg-blue-600 px-2 py-0.5 rounded-md">Casual Layering</span>
+            <h4 class="font-bold text-sm mt-1">แจ็คเก็ตยีนส์ + ยืดดำ</h4>
+            <p class="text-xs text-slate-200">Total: ฿1,180</p>
+          </div>
+        </div>
+
+        <div class="relative group rounded-2xl overflow-hidden shadow-md bg-gradient-to-b from-rose-100 to-pink-300 h-80 flex flex-col justify-end p-5">
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition duration-300"></div>
+          <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-7xl select-none group-hover:scale-110 transition duration-300">🏃‍♂️</span>
+          <div class="relative z-10 text-white">
+            <span class="text-[10px] uppercase font-bold tracking-wider bg-purple-600 px-2 py-0.5 rounded-md">Weekend Vibes</span>
+            <h4 class="font-bold text-sm mt-1">กราฟิกที + ขาสั้นชิโน</h4>
+            <p class="text-xs text-slate-200">Total: ฿770</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Newsletter Section -->
+  <section class="py-14 bg-slate-900 text-white relative">
+    <div class="max-w-4xl mx-auto px-4 text-center space-y-4">
+      <span class="text-xs font-bold tracking-widest uppercase text-rose-400">JOIN OUR COMMUNITY</span>
+      <h3 class="text-2xl sm:text-3xl font-black">รับโค้ดส่วนลด ฿100 ทันทีสำหรับการสั่งซื้อครั้งแรก</h3>
+      <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">ติดตามอัปเดตคอลเลกชันใหม่ก่อนใคร</p>
+
+      <form onsubmit="handleSubscribe(event)" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-2">
+        <input type="email" id="newsletter-email" required placeholder="กรอกอีเมลของคุณ..." class="flex-1 px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500">
+        <button type="submit" class="px-6 py-3 bg-rose-600 hover:bg-rose-500 font-bold text-sm rounded-xl shadow-lg transition active:scale-95">รับสิทธิ์ส่วนลด</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- 10. Footer -->
+  <footer class="bg-slate-950 text-slate-400 text-xs pt-16 pb-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-xl bg-white text-slate-950 flex items-center justify-center font-black text-lg">A</div>
+            <span class="text-xl font-black tracking-tight text-white uppercase">AURA <span class="text-rose-500">&</span> CO.</span>
+          </div>
+          <p class="text-slate-400 leading-relaxed max-w-sm">แบรนด์เสื้อผ้าสตรีทแวร์และมินิมอล ออกแบบเพื่อคนรุ่นใหม่ที่รักความเรียบง่าย</p>
+        </div>
+        <div>
+          <h5 class="text-white font-bold text-sm mb-3">คอลเลกชัน</h5>
+          <ul class="space-y-2">
+            <li><a href="#new-arrival" class="hover:text-white transition">สินค้ามาใหม่</a></li>
+            <li><a href="#catalog" class="hover:text-white transition">เสื้อยืด Oversized</a></li>
+            <li><a href="#catalog" class="hover:text-white transition">เสื้อเชิ้ตสไตล์เกาหลี</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-white font-bold text-sm mb-3">บริการลูกค้า</h5>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white transition">ตารางเทียบไซส์เสื้อผ้า</a></li>
+            <li><a href="#" class="hover:text-white transition">นโยบายเปลี่ยนและคืนสินค้า</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-white font-bold text-sm mb-3">การชำระเงิน</h5>
+          <div class="flex flex-wrap gap-2 text-[10px] font-bold text-slate-300">
+            <span class="bg-slate-800 px-2.5 py-1 rounded">PromptPay</span>
+            <span class="bg-slate-800 px-2.5 py-1 rounded">VISA</span>
+            <span class="bg-slate-800 px-2.5 py-1 rounded">Mastercard</span>
+          </div>
+        </div>
+      </div>
+      <div class="pt-8 text-center sm:text-left text-slate-500">
+        <p>© 2026 AURA & CO. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 11. Shopping Cart Drawer -->
+  <div id="cart-drawer-backdrop" onclick="toggleCartDrawer()" class="hidden fixed inset-0 bg-black/60 backdrop-blur-xs z-50 transition-opacity"></div>
+  <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+      <div class="flex items-center gap-2">
+        <h3 class="font-bold text-base text-slate-900">ตะกร้าสินค้าของฉัน</h3>
+        <span id="drawer-item-count" class="bg-rose-100 text-rose-600 text-xs font-bold px-2 py-0.5 rounded-full">0 ชิ้น</span>
+      </div>
+      <button onclick="toggleCartDrawer()" class="p-2 text-slate-400 hover:text-slate-700">✕</button>
+    </div>
+
+    <div class="px-6 py-3 bg-amber-50/80 border-b border-amber-100 text-xs">
+      <div class="flex justify-between font-semibold text-amber-900 mb-1">
+        <span id="shipping-tracker-text">ซื้อเพิ่มอีก ฿590 เพื่อส่งฟรี! 🚚</span>
+      </div>
+      <div class="w-full bg-amber-200/60 rounded-full h-1.5 overflow-hidden">
+        <div id="shipping-progress-bar" class="bg-amber-500 h-full rounded-full transition-all duration-300" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <div id="cart-drawer-items" class="flex-1 overflow-y-auto p-6 space-y-4 no-scrollbar">
+      <div class="py-20 text-center text-slate-400">
+        <span class="text-5xl block mb-3">🛍️</span>
+        <p class="font-medium text-sm text-slate-600">ยังไม่มีสินค้าในตะกร้าของคุณ</p>
+      </div>
+    </div>
+
+    <div class="border-t border-slate-200 p-6 bg-slate-50 space-y-3">
+      <div class="flex gap-2">
+        <input type="text" id="coupon-code-input" placeholder="ใส่โค้ดส่วนลด (เช่น AURA15)" class="flex-1 px-3 py-2 text-xs bg-white border border-slate-300 rounded-xl uppercase font-mono">
+        <button onclick="applyCoupon()" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition">ใช้โค้ด</button>
+      </div>
+      <div id="coupon-alert" class="hidden text-[11px] font-semibold text-emerald-600">✓ ใช้งานโค้ดสำเร็จ: ลด 15%</div>
+
+      <div class="space-y-1.5 text-xs text-slate-600 pt-2 border-t border-slate-200/60">
+        <div class="flex justify-between">
+          <span>ยอดรวมสินค้า</span>
+          <span id="summary-subtotal" class="font-semibold text-slate-900">฿0</span>
+        </div>
+        <div class="flex justify-between">
+          <span>ส่วนลด</span>
+          <span id="summary-discount" class="font-semibold text-rose-600">-฿0</span>
+        </div>
+        <div class="flex justify-between">
+          <span>ค่าจัดส่ง</span>
+          <span id="summary-shipping" class="font-semibold text-slate-900">฿0</span>
+        </div>
+        <div class="flex justify-between text-base font-black text-slate-900 pt-2 border-t border-slate-200">
+          <span>ยอดชำระสุทธิ</span>
+          <span id="summary-grandtotal" class="text-rose-600">฿0</span>
+        </div>
+      </div>
+
+      <button onclick="proceedToCheckout()" class="w-full py-3.5 bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm rounded-xl shadow-lg transition">ดำเนินการสั่งซื้อ ➔</button>
+    </div>
+  </aside>
+
+  <!-- 12. Wishlist Modal -->
+  <div id="wishlist-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <div class="flex items-center gap-2">
+          <span class="text-rose-500 text-xl">❤️</span>
+          <h3 class="text-lg font-bold text-slate-900">รายการสินค้าที่ชอบ</h3>
+        </div>
+        <button onclick="openWishlistModal()" class="text-slate-400 hover:text-slate-600 p-1">✕</button>
+      </div>
+      <div id="wishlist-items-container" class="max-h-80 overflow-y-auto space-y-3 no-scrollbar text-center text-xs text-slate-400 py-6">
+        ยังไม่มีสินค้าในรายการโปรด
+      </div>
+    </div>
+  </div>
+
+  <!-- 13. Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-2xl text-xs font-semibold flex items-center gap-3 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none border border-slate-700">
+    <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">✓</div>
+    <span id="toast-message">เพิ่มสินค้าลงในตะกร้าเรียบร้อยแล้ว</span>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    const catalogProducts = [
+      { id: 1, title: "เสื้อยืด Signature Minimal Oversized", category: "tshirt", badge: "ขายดีอันดับ 1", badgeColor: "bg-rose-600", price: 390, originalPrice: 590, rating: 4.9, reviews: 240, emoji: "👕", colorDesc: "ผ้าคอตตอนคอมบ์ 100% สีกรมท่า / ขาว / ดำ", sizes: ["S", "M", "L", "XL"] },
+      { id: 2, title: "เสื้อเชิ้ต Cuban Collar ผ้าลินินธรรมชาติ", category: "shirt", badge: "ลด 35%", badgeColor: "bg-amber-600", price: 490, originalPrice: 750, rating: 4.8, reviews: 130, emoji: "👔", colorDesc: "ผ้าลินินธรรมชาติ ระบายอากาศดีเยี่ยม", sizes: ["M", "L", "XL"] },
+      { id: 3, title: "กางเกง Utility Cargo Pants ขากระบอก", category: "pants", badge: "สินค้าใหม่", badgeColor: "bg-emerald-600", price: 690, originalPrice: 950, rating: 4.9, reviews: 95, emoji: "👖", colorDesc: "ผ้าเวสปอยท์กันน้ำเบาๆ กระเป๋า 6 ช่อง", sizes: ["S", "M", "L", "XL"] },
+      { id: 4, title: "แจ็คเก็ตยีนส์ Vintage Washed Denim", category: "jacket", badge: "HOT ITEM", badgeColor: "bg-indigo-600", price: 890, originalPrice: 1290, rating: 4.9, reviews: 180, emoji: "🧥", colorDesc: "ผ้ายีนส์หนา 13.5 oz ฟอกนุ่มวินเทจ", sizes: ["M", "L", "XL"] },
+      { id: 5, title: "เสื้อยืดลายกราฟิก Tokyo Streetwear", category: "tshirt", badge: "ลด 20%", badgeColor: "bg-rose-600", price: 350, originalPrice: 450, rating: 4.7, reviews: 310, emoji: "⚡", colorDesc: "สกรีนเนียนแน่น ไม่แตก ไม่ลอก", sizes: ["S", "M", "L", "XL"] },
+      { id: 6, title: "กางเกงสแล็คขาเต่อ ทรงเกาหลีทรงสมาร์ท", category: "pants", badge: "ยอดนิยม", badgeColor: "bg-slate-700", price: 550, originalPrice: 790, rating: 4.8, reviews: 215, emoji: "🧳", colorDesc: "ผ้ายืดทิ้งตัว ทรงสวยไม่ต้องรีด", sizes: ["S", "M", "L"] },
+      { id: 7, title: "เสื้อเชิ้ต Oxford แขนยาวทรง Slim-Regular", category: "shirt", badge: "แนะนำ", badgeColor: "bg-blue-600", price: 590, originalPrice: 850, rating: 4.9, reviews: 145, emoji: "👔", colorDesc: "ผ้าอ็อกฟอร์ดเนื้อหนานุ่ม ใส่ทำงานหรือเที่ยว", sizes: ["S", "M", "L", "XL"] },
+      { id: 8, title: "เสื้อฮู้ดดี้ Streetwear Fleece Pullover", category: "jacket", badge: "มาแรง", badgeColor: "bg-purple-600", price: 790, originalPrice: 1150, rating: 4.9, reviews: 88, emoji: "🥷", colorDesc: "ผ้าสำลีเนื้อนุ่มกันหนาวห้องแอร์ สตรีทสไตล์", sizes: ["M", "L", "XL"] }
+    ];
+
+    let cart = [];
+    let wishlist = new Set();
+    let currentCategory = 'all';
+    let currentSort = 'featured';
+    let currentSizeFilter = 'ALL';
+    let searchQuery = '';
+    let discountRate = 0;
+
+    function renderCatalog() {
+      const grid = document.getElementById('product-grid');
+      let filtered = catalogProducts.filter(item => {
+        const matchCategory = (currentCategory === 'all' || item.category === currentCategory);
+        const matchSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase()) || item.colorDesc.toLowerCase().includes(searchQuery.toLowerCase());
+        const matchSize = (currentSizeFilter === 'ALL' || item.sizes.includes(currentSizeFilter));
+        return matchCategory && matchSearch && matchSize;
+      });
+
+      if (currentSort === 'price-low') filtered.sort((a, b) => a.price - b.price);
+      else if (currentSort === 'price-high') filtered.sort((a, b) => b.price - a.price);
+      else if (currentSort === 'rating') filtered.sort((a, b) => b.rating - a.rating);
+      else filtered.sort((a, b) => b.reviews - a.reviews);
+
+      document.getElementById('catalog-count-label').textContent = `พบทั้งหมด ${filtered.length} รายการ`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="col-span-full py-16 text-center text-slate-400"><p class="font-bold text-base text-slate-700">ไม่พบเสื้อผ้าที่ตรงกับเงื่อนไข</p></div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => {
+        const isFav = wishlist.has(item.id);
+        return `
+          <div class="cloth-card group bg-white rounded-2xl border border-slate-200/80 overflow-hidden hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col justify-between">
+            <div class="relative bg-gradient-to-b from-slate-50 to-slate-100 h-60 flex items-center justify-center p-4 overflow-hidden select-none">
+              <span class="absolute top-3 left-3 ${item.badgeColor} text-white text-[10px] font-bold px-2.5 py-1 rounded-md shadow-sm">${item.badge}</span>
+              <button onclick="toggleWishlist(${item.id})" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur hover:bg-white flex items-center justify-center transition shadow-sm ${isFav ? 'text-rose-500' : 'text-slate-400 hover:text-rose-500'}">
+                <svg class="w-4 h-4 ${isFav ? 'fill-rose-500' : 'fill-none'}" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                </svg>
+              </button>
+              <span class="text-7xl transform group-hover:scale-110 transition duration-300">${item.emoji}</span>
+              <div class="quick-add-btn absolute bottom-3 inset-x-3 opacity-0 transform translate-y-2 transition-all duration-200 flex gap-1.5">
+                <button onclick="addToCart(${item.id})" class="flex-1 py-2 bg-slate-900 hover:bg-rose-600 text-white rounded-xl text-xs font-bold shadow-lg transition">+ ใส่ตะกร้าด่วน</button>
+              </div>
+            </div>
+            <div class="p-4 flex-1 flex flex-col justify-between">
+              <div>
+                <p class="text-[11px] text-slate-400 mb-1 line-clamp-1">${item.colorDesc}</p>
+                <h4 class="text-sm font-bold text-slate-900 group-hover:text-rose-600 transition leading-snug">${item.title}</h4>
+                <div class="flex items-center gap-2 mt-2 text-xs text-slate-500">
+                  <span class="text-amber-500 font-semibold">★ ${item.rating}</span>
+                  <span class="text-slate-300">•</span>
+                  <span>(${item.reviews})</span>
+                </div>
+              </div>
+              <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between">
+                <div>
+                  <div class="text-base font-black text-rose-600">฿${item.price.toLocaleString()}</div>
+                  <div class="text-[11px] text-slate-400 line-through">฿${item.originalPrice.toLocaleString()}</div>
+                </div>
+                <div class="flex items-center gap-1">
+                  ${item.sizes.map(s => `<span class="text-[10px] bg-slate-100 px-1.5 py-0.5 rounded text-slate-600 font-medium">${s}</span>`).join('')}
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function setFilter(cat, btn) {
+      currentCategory = cat;
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('bg-slate-900', 'text-white');
+        b.classList.add('text-slate-600');
+      });
+      btn.classList.add('bg-slate-900', 'text-white');
+      btn.classList.remove('text-slate-600');
+      renderCatalog();
+    }
+
+    function selectCategory(cat) {
+      currentCategory = cat;
+      document.getElementById('catalog').scrollIntoView({ behavior: 'smooth' });
+      renderCatalog();
+    }
+
+    function toggleSizeFilter(size, btn) {
+      currentSizeFilter = size;
+      document.querySelectorAll('.size-btn').forEach(b => {
+        b.classList.remove('bg-slate-900', 'text-white', 'font-bold');
+        b.classList.add('text-slate-700', 'font-medium');
+      });
+      btn.classList.add('bg-slate-900', 'text-white', 'font-bold');
+      btn.classList.remove('text-slate-700');
+      renderCatalog();
+    }
+
+    function handleSortChange(val) { currentSort = val; renderCatalog(); }
+    function handleSearch(val) { searchQuery = val; renderCatalog(); }
+
+    function toggleWishlist(id) {
+      const item = catalogProducts.find(p => p.id === id);
+      if (wishlist.has(id)) { wishlist.delete(id); showToast("ลบออกจากรายการสิ่งที่ชอบแล้ว"); }
+      else { wishlist.add(id); showToast(`บันทึก "${item.title}" ในสิ่งที่ชอบ ❤️`); }
+      const badge = document.getElementById('wishlist-badge');
+      if (wishlist.size > 0) badge.classList.remove('hidden'); else badge.classList.add('hidden');
+      renderCatalog();
+    }
+
+    function openWishlistModal() {
+      const modal = document.getElementById('wishlist-modal');
+      modal.classList.toggle('hidden');
+      renderWishlistItems();
+    }
+
+    function renderWishlistItems() {
+      const container = document.getElementById('wishlist-items-container');
+      if (wishlist.size === 0) {
+        container.innerHTML = `<div class="py-8 text-slate-400">ยังไม่มีสินค้าในรายการโปรดของคุณ</div>`;
+        return;
+      }
+      const items = catalogProducts.filter(p => wishlist.has(p.id));
+      container.innerHTML = items.map(item => `
+        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-2xl border border-slate-100 text-left">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">${item.emoji}</span>
+            <div>
+              <h5 class="text-xs font-bold text-slate-800 line-clamp-1">${item.title}</h5>
+              <span class="text-xs font-bold text-rose-600">฿${item.price.toLocaleString()}</span>
+            </div>
+          </div>
+          <button onclick="addToCart(${item.id})" class="px-3 py-1.5 bg-slate-900 text-white rounded-xl text-xs font-semibold hover:bg-rose-600">ใส่ตะกร้า</button>
+        </div>
+      `).join('');
+    }
+
+    function addToCart(id) {
+      const item = catalogProducts.find(p => p.id === id);
+      const existing = cart.find(c => c.id === id);
+      if (existing) existing.qty += 1; else cart.push({ ...item, qty: 1 });
+      updateCartUI();
+      showToast(`เพิ่ม "${item.title}" ลงตะกร้าแล้ว! 🛍️`);
+    }
+
+    function changeCartQty(id, delta) {
+      const item = cart.find(c => c.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) cart = cart.filter(c => c.id !== id);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
+      const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+      const discount = subtotal * discountRate;
+      const shipping = (subtotal >= 590 || subtotal === 0) ? 0 : 50;
+      const grandTotal = Math.max(0, subtotal - discount + shipping);
+
+      document.getElementById('cart-counter').textContent = totalQty;
+      document.getElementById('cart-total-top').textContent = `฿${subtotal.toLocaleString()}`;
+      document.getElementById('drawer-item-count').textContent = `${totalQty} ชิ้น`;
+
+      const freeShipThreshold = 590;
+      const progressPercent = Math.min(100, (subtotal / freeShipThreshold) * 100);
+      document.getElementById('shipping-progress-bar').style.width = `${progressPercent}%`;
+
+      const trackerText = document.getElementById('shipping-tracker-text');
+      if (subtotal >= freeShipThreshold) {
+        trackerText.innerHTML = `🎉 ยินดีด้วย! คุณได้รับ <strong>สิทธิ์จัดส่งฟรี</strong> แล้ว!`;
+      } else {
+        const remaining = freeShipThreshold - subtotal;
+        trackerText.innerHTML = `ซื้อเพิ่มอีก <strong>฿${remaining.toLocaleString()}</strong> เพื่อส่งฟรี! 🚚`;
+      }
+
+      const container = document.getElementById('cart-drawer-items');
+      if (cart.length === 0) {
+        container.innerHTML = `<div class="py-20 text-center text-slate-400"><span class="text-5xl block mb-3">🛍️</span><p class="font-medium text-sm text-slate-600">ยังไม่มีสินค้าในตะกร้าของคุณ</p></div>`;
+      } else {
+        container.innerHTML = cart.map(item => `
+          <div class="flex items-center justify-between p-3 bg-slate-50 rounded-2xl border border-slate-100">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">${item.emoji}</span>
+              <div>
+                <h5 class="text-xs font-bold text-slate-800 line-clamp-1">${item.title}</h5>
+                <span class="text-xs font-bold text-rose-600">฿${(item.price * item.qty).toLocaleString()}</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="changeCartQty(${item.id}, -1)" class="w-7 h-7 rounded-lg bg-white border border-slate-200 text-xs font-bold hover:bg-slate-100 flex items-center justify-center">-</button>
+              <span class="text-xs font-bold w-4 text-center">${item.qty}</span>
+              <button onclick="changeCartQty(${item.id}, 1)" class="w-7 h-7 rounded-lg bg-white border border-slate-200 text-xs font-bold hover:bg-slate-100 flex items-center justify-center">+</button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      document.getElementById('summary-subtotal').textContent = `฿${subtotal.toLocaleString()}`;
+      document.getElementById('summary-discount').textContent = `-฿${discount.toLocaleString()}`;
+      document.getElementById('summary-shipping').textContent = shipping === 0 ? "ฟรี (฿0)" : `฿${shipping}`;
+      document.getElementById('summary-grandtotal').textContent = `฿${grandTotal.toLocaleString()}`;
+    }
+
+    function toggleCartDrawer() {
+      document.getElementById('cart-drawer').classList.toggle('translate-x-full');
+      document.getElementById('cart-drawer-backdrop').classList.toggle('hidden');
+    }
+
+    function toggleMobileNav() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+
+    function copyCoupon(code) {
+      document.getElementById('coupon-code-input').value = code;
+      showToast(`คัดลอกโค้ด "${code}" สำเร็จ!`);
+      toggleCartDrawer();
+    }
+
+    function applyCoupon() {
+      const code = document.getElementById('coupon-code-input').value.trim().toUpperCase();
+      if (code === 'AURA15' || code === 'WELCOME15') {
+        discountRate = 0.15;
+        document.getElementById('coupon-alert').classList.remove('hidden');
+        showToast("🎉 ใช้โค้ดลด 15% สำเร็จ!");
+      } else {
+        alert("ขออภัย โค้ดส่วนลดไม่ถูกต้อง");
+        discountRate = 0;
+        document.getElementById('coupon-alert').classList.add('hidden');
+      }
+      updateCartUI();
+    }
+
+    function proceedToCheckout() {
+      if (cart.length === 0) { alert("กรุณาเลือกสินค้าใส่ตะกร้าก่อนครับ"); return; }
+      alert("🎉 ขอบคุณสำหรับการสั่งซื้อ!");
+      cart = [];
+      updateCartUI();
+      toggleCartDrawer();
+    }
+
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const email = document.getElementById('newsletter-email').value;
+      showToast(`🎉 ส่งโค้ดส่วนลด ฿100 ไปที่ ${email} เรียบร้อยแล้ว!`);
+      document.getElementById('newsletter-email').value = '';
+    }
+
+    let fsSeconds = 2 * 3600 + 48 * 60 + 30;
+    setInterval(() => {
+      if (fsSeconds > 0) {
+        fsSeconds--;
+        const h = String(Math.floor(fsSeconds / 3600)).padStart(2, '0');
+        const m = String(Math.floor((fsSeconds % 3600) / 60)).padStart(2, '0');
+        const s = String(fsSeconds % 60).padStart(2, '0');
+        document.getElementById('fs-hours').textContent = h;
+        document.getElementById('fs-minutes').textContent = m;
+        document.getElementById('fs-seconds').textContent = s;
+      }
+    }, 1000);
+
+    let toastTimer;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-message').textContent = msg;
+      toast.classList.remove('opacity-0', 'translate-y-24');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-24');
+      }, 2500);
+    }
+
+    renderCatalog();
+    updateCartUI();
+  </script>
+</body>
+</html>
