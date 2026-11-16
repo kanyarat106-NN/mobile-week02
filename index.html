@@ -1,10 +1,349 @@
 <!DOCTYPE html>
 <html lang="th">
-<head><meta charset="UTF-8"><title>week02</title></head>
-<body>
-<h1>หน้าแนะนำตัว</h1>
-<p>ชื่อเล่น: ...</p>
-<p>สาขา: ...</p>
-<p>ร้านโครงงาน: ...</p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>หน้าแนะนำตัวเอง | กัลยรัตน์ (กุ้งนาง)</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Kanit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Kanit', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#fdf4f3',
+              100: '#fbe8e7',
+              500: '#e14d3d',
+              600: '#c93829',
+              900: '#1e1c1b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Kanit', sans-serif;
+    }
+    .gradient-mesh {
+      background-color: #0f172a;
+      background-image: 
+        radial-gradient(at 0% 0%, hsla(343,100%,76%,0.2) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, hsla(242,100%,70%,0.25) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, hsla(180,100%,50%,0.15) 0px, transparent 50%);
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen py-6 sm:py-12 px-3 sm:px-6">
+
+  <!-- Main Container -->
+  <main class="max-w-4xl mx-auto space-y-6">
+
+    <!-- Top Navigation / Quick Bar -->
+    <header class="bg-white/80 backdrop-blur-md border border-slate-200/80 rounded-2xl px-5 py-3.5 flex items-center justify-between shadow-xs">
+      <div class="flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+        <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+        <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+        <span class="text-xs font-bold text-slate-400 ml-2">PORTFOLIO & PROFILE</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="store.html" class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-900 text-white hover:bg-rose-600 transition shadow-sm">
+          <span>🛍️ หน้าร้านโครงงาน (Store)</span>
+          <span>➔</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- 1. Hero Profile Card -->
+    <section class="bg-white rounded-3xl border border-slate-200/80 overflow-hidden shadow-xl">
+      
+      <!-- Cover Banner -->
+      <div class="h-44 sm:h-56 gradient-mesh relative flex items-end justify-end p-4 sm:p-6 text-white overflow-hidden">
+        <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
+        <div class="relative z-10 flex items-center gap-2 bg-slate-900/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 text-xs font-medium">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>พร้อมเรียนรู้และพัฒนาโปรเจกต์ 🚀</span>
+        </div>
+      </div>
+
+      <!-- Avatar & Basic Bio -->
+      <div class="px-6 sm:px-8 pb-8 pt-0 relative">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between -mt-16 sm:-mt-20 gap-4 mb-6">
+          
+          <!-- Profile Image & Status -->
+          <div class="relative inline-block">
+            <div class="w-28 h-28 sm:w-36 sm:h-36 rounded-3xl bg-gradient-to-tr from-rose-500 via-amber-400 to-indigo-600 p-1 shadow-2xl">
+              <div class="w-full h-full bg-white rounded-[22px] flex items-center justify-center text-5xl sm:text-6xl select-none overflow-hidden">
+                👩‍💻
+              </div>
+            </div>
+            <!-- Online status badge -->
+            <span class="absolute bottom-1 right-1 w-5 h-5 bg-emerald-500 border-4 border-white rounded-full"></span>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap gap-2.5">
+            <a href="mailto:kungnang.0957786217@gmail.com" class="px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold shadow-md shadow-rose-600/20 transition active:scale-95 flex items-center gap-1.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <span>ส่งอีเมลติดต่อ</span>
+            </a>
+            <a href="https://github.com/kanyarat106-NN" target="_blank" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold shadow-md transition active:scale-95 flex items-center gap-1.5">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub Profile</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Name & Headline -->
+        <div class="space-y-2">
+          <div class="flex flex-wrap items-baseline gap-2">
+            <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">นางสาว กัลยรัตน์</h1>
+            <span class="text-lg font-bold text-rose-600 bg-rose-50 border border-rose-200/80 px-2.5 py-0.5 rounded-lg">
+              (ชื่อเล่น: กุ้งนาง)
+            </span>
+          </div>
+
+          <p class="text-sm sm:text-base font-medium text-slate-600 flex items-center gap-2">
+            <span>💻</span>
+            <span>นักศึกษาผู้สนใจด้าน <strong>การพัฒนาเว็บ & แอปพลิเคชันบนมือถือ (Mobile & Web Development)</strong></span>
+          </p>
+
+          <p class="text-xs sm:text-sm text-slate-500 max-w-2xl leading-relaxed pt-1">
+            ยินดีต้อนรับสู่หน้าแนะนำตัวเองและพอร์ตโฟลิโอผลงาน ฉันมีความกระตือรือร้นในการเรียนรู้เทคโนโลยีใหม่ๆ มุ่งมั่นพัฒนาทักษะด้านการเขียนโค้ด การออกแบบหน้าตาแอปพลิเคชัน (UI/UX) และการสร้างระบบหน้าร้านออนไลน์ที่มีประสิทธิภาพ
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2. Grid Info: Education & Quick Details -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Education Card -->
+      <div class="md:col-span-2 bg-white rounded-3xl p-6 border border-slate-200/80 shadow-md space-y-4">
+        <div class="flex items-center gap-2.5 pb-3 border-b border-slate-100">
+          <div class="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-lg">
+            🎓
+          </div>
+          <h2 class="text-base font-bold text-slate-900">ข้อมูลการศึกษาและข้อมูลส่วนตัว</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+          <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
+            <span class="text-slate-400 block mb-0.5">ชื่อ-นามสกุล</span>
+            <span class="font-bold text-slate-800 text-sm">นางสาว กัลยรัตน์</span>
+          </div>
+
+          <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
+            <span class="text-slate-400 block mb-0.5">ชื่อเล่น</span>
+            <span class="font-bold text-slate-800 text-sm">กุ้งนาง (Kungnang)</span>
+          </div>
+
+          <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
+            <span class="text-slate-400 block mb-0.5">สาขาวิชา / ภาควิชา</span>
+            <span class="font-bold text-slate-800 text-sm">เทคโนโลยีสารสนเทศ / วิทยาการคอมพิวเตอร์</span>
+          </div>
+
+          <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
+            <span class="text-slate-400 block mb-0.5">วิชา / สัปดาห์การเรียน</span>
+            <span class="font-bold text-rose-600 text-sm">Mobile App Development (Week 02)</span>
+          </div>
+        </div>
+
+        <!-- Bio Quote -->
+        <div class="bg-rose-50/60 border border-rose-100 rounded-2xl p-4 text-xs text-rose-900">
+          <p class="font-semibold mb-1">💡 คติประจำใจ / เป้าหมายการเรียนรู้:</p>
+          <p class="italic text-rose-800 font-light">"การเริ่มต้นเขียนโค้ดอาจมีความท้าทาย แต่ความสม่ำเสมอและการลงมือทำจริงจะทำให้เราพัฒนาได้อย่างก้าวกระโดด"</p>
+        </div>
+      </div>
+
+      <!-- Contact Info Card -->
+      <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-md space-y-4 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2.5 pb-3 border-b border-slate-100">
+            <div class="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg">
+              📬
+            </div>
+            <h2 class="text-base font-bold text-slate-900">ช่องทางการติดต่อ</h2>
+          </div>
+
+          <ul class="space-y-3 pt-3 text-xs">
+            <li class="flex items-center gap-2.5">
+              <span class="w-7 h-7 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center shrink-0">✉️</span>
+              <div class="truncate">
+                <span class="text-slate-400 text-[11px] block">อีเมล</span>
+                <a href="mailto:kungnang.0957786217@gmail.com" class="font-semibold text-slate-800 hover:text-rose-600 transition truncate block">
+                  kungnang.0957786217@gmail.com
+                </a>
+              </div>
+            </li>
+
+            <li class="flex items-center gap-2.5">
+              <span class="w-7 h-7 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center shrink-0">🐙</span>
+              <div>
+                <span class="text-slate-400 text-[11px] block">GitHub</span>
+                <a href="https://github.com/kanyarat106-NN" target="_blank" class="font-semibold text-slate-800 hover:text-rose-600 transition">
+                  kanyarat106-NN
+                </a>
+              </div>
+            </li>
+
+            <li class="flex items-center gap-2.5">
+              <span class="w-7 h-7 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center shrink-0">📱</span>
+              <div>
+                <span class="text-slate-400 text-[11px] block">เบอร์โทรศัพท์</span>
+                <span class="font-semibold text-slate-800">095-778-6217</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <button onclick="copyEmail()" class="w-full mt-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5">
+          <span>📋</span>
+          <span id="copy-btn-text">คัดลอกอีเมลติดต่อ</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- 3. Skills & Tools -->
+    <section class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-md space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg">
+            ⚡
+          </div>
+          <h2 class="text-base font-bold text-slate-900">ทักษะและเครื่องมือที่กำลังศึกษา (Skills & Tools)</h2>
+        </div>
+        <span class="text-xs text-slate-400">Week 02</span>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs">
+        
+        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center gap-3 hover:border-rose-200 transition">
+          <span class="text-2xl">🌐</span>
+          <div>
+            <h3 class="font-bold text-slate-800">HTML5 & CSS3</h3>
+            <p class="text-[11px] text-slate-400">โครงสร้างเว็บ & จัดสไตล์</p>
+          </div>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center gap-3 hover:border-rose-200 transition">
+          <span class="text-2xl">🎨</span>
+          <div>
+            <h3 class="font-bold text-slate-800">Tailwind CSS</h3>
+            <p class="text-[11px] text-slate-400">Modern Responsive UI</p>
+          </div>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center gap-3 hover:border-rose-200 transition">
+          <span class="text-2xl">📱</span>
+          <div>
+            <h3 class="font-bold text-slate-800">Mobile App UI</h3>
+            <p class="text-[11px] text-slate-400">ออกแบบสำหรับจอมือถือ</p>
+          </div>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center gap-3 hover:border-rose-200 transition">
+          <span class="text-2xl">📦</span>
+          <div>
+            <h3 class="font-bold text-slate-800">Git & GitHub</h3>
+            <p class="text-[11px] text-slate-400">การควบคุมเวอร์ชันโค้ด</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. Featured Project Highlight: ร้านโครงงาน (เชื่อมไปยัง store.html) -->
+    <section class="bg-gradient-to-r from-slate-900 via-zinc-900 to-rose-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+      <!-- Glow -->
+      <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-rose-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+        
+        <div class="md:col-span-8 space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/20 border border-rose-400/40 text-rose-300 text-xs font-bold">
+            <span>🏪 ร้านโครงงานประจำวิชา (Featured Project)</span>
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+            AURA & CO. | เว็บไซต์ร้านเสื้อผ้าแฟชั่นมินิมอล
+          </h2>
+
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-xl font-light">
+            ผลงานออกแบบหน้าร้านค้าออนไลน์ (E-Commerce Storefront) 1 หน้า ครบถ้วนด้วยระบบหมวดหมู่สินค้า, ตะกร้าสินค้าแบบสไลด์ (Slide-over Cart), ตัวกรองไซส์ (S/M/L/XL), ระบบค้นหา และการคำนวณโค้ดส่วนลดโปรโมชั่น
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <a href="store.html" class="px-5 py-3 rounded-xl bg-white text-slate-900 font-bold text-xs hover:bg-slate-100 transition shadow-lg active:scale-95 flex items-center gap-2">
+              <span>เยี่ยมชมหน้าร้านโครงงาน</span>
+              <span>➔</span>
+            </a>
+            <span class="text-xs text-slate-400">ไฟล์: <code>store.html</code></span>
+          </div>
+        </div>
+
+        <div class="md:col-span-4 flex justify-center">
+          <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 p-4 flex flex-col items-center justify-center text-center shadow-2xl">
+            <span class="text-6xl mb-2 select-none">👕</span>
+            <span class="text-xs font-bold text-white uppercase tracking-wider">AURA & CO.</span>
+            <span class="text-[10px] text-rose-300">CLOTHING STORE</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400">
+      <p>© 2026 กัลยรัตน์ (กุ้งนาง) • Mobile & Web Development Week 02</p>
+      <p class="text-[11px] text-slate-400 mt-1">Repository: <a href="https://github.com/kanyarat106-NN/mobile-week02" target="_blank" class="text-rose-600 hover:underline">kanyarat106-NN/mobile-week02</a></p>
+    </footer>
+
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-4 py-2.5 rounded-xl shadow-xl text-xs font-medium flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <span class="text-emerald-400">✓</span>
+    <span id="toast-text">คัดลอกอีเมลเรียบร้อยแล้ว</span>
+  </div>
+
+  <script>
+    function copyEmail() {
+      const email = 'kungnang.0957786217@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        showToast("คัดลอกอีเมล " + email + " สำเร็จ!");
+        document.getElementById('copy-btn-text').textContent = '✓ คัดลอกสำเร็จ!';
+        setTimeout(() => {
+          document.getElementById('copy-btn-text').textContent = 'คัดลอกอีเมลติดต่อ';
+        }, 2000);
+      });
+    }
+
+    let toastTimer;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-text').textContent = msg;
+      toast.classList.remove('opacity-0', 'translate-y-20');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-20');
+      }, 2500);
+    }
+  </script>
 </body>
 </html>
